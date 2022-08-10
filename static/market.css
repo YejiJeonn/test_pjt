@@ -1,0 +1,23 @@
+.product-list{
+    max-width: 400px;
+    padding: 20px;
+}
+
+.product-write{
+    max-width: 400px;
+    padding: 20px;
+}
+
+.write-btn{
+    max-width: 400px;
+    padding: 20px;
+}
+
+.product-image{
+    width: 100px;
+}
+
+#detailModalContent{
+    white-space: pre-wrap;
+}
+/* 모달 속성 알아보기 */

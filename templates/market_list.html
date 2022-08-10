@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/static/market.css">
+        <script src="/static/market.js"></script>
+    </head>
+    <body>
+        <div class="product-list">
+            <div class="list-group list-group-flush">
+                {% for market in products %} <!-- python에 의존하는 형식의 문장 / 장고라는 형식 (중괄호 사용)-->
+                <button type="button" class="list-group-item list-group-item-action" id="{{ market.title }}">
+                    <div class="media"> <!-- 리스트형식의 버튼 생성 -->
+                        <img src="/static/prod1.jpg" class="mr-2 product-image">
+                        <div class="media-body">
+                            <strong>{{ market.title }}</strong><br>
+                            <small>{{ market.location }}</small><br>
+                            <span>{{ market.price }}원</span>
+                        </div>
+                    </div>
+                </button>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="write-btn">
+            <a role="button" href="/writepage" class="btn btn-primary btn-block">상품 등록</a>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade modal-dialog modal-dialog-centered" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detailModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="detailModalContent"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>  <!-- modal 클래스에서 primary와 secondary 차이 알아보기 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
